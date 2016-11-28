@@ -1,0 +1,16 @@
+{
+  "name": "snake",
+  "version": "1.0.0",
+  "description": "video game",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Befeepilf/snake.git"
+  },
+  "author": "Befeepilf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Befeepilf/snake/issues"
+  },
+  "homepage": "https://github.com/Befeepilf/snake#readme"
+}
