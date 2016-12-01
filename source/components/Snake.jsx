@@ -6,7 +6,7 @@ class Snake extends React.Component {
 	constructor(...args) {
 		super(...args);
 
-		this.state = {
+		/*this.state = {
 			segments: [{x: 110, y: 0}, {x: 100, y: 0}, {x: 80, y: 0}, {x: 60, y: 0}, {x: 40, y: 0}, {x: 20, y: 0}, {x: 0, y: 0}],
 			x: 60,
 			y: 0,
@@ -16,45 +16,24 @@ class Snake extends React.Component {
 			XB: false,
 			YF: false,
 			YB: false
-		}
+		}*/
 
 		$(document).on('keydown', (event) => {
 			switch(event.keyCode) {
+				case 32:
+					this.props.actions.addSegment();
+					break;
 				case 37:
-					this.setState({
-						XF: false,
-						XB: true,
-						YF: false,
-						YB: false
-					});
-					this.setXB();
+					this.props.actions.setDirection('XB');
 					break;
 				case 38:
-					this.setState({
-						XF: false,
-						XB: false,
-						YF: false,
-						YB: true
-					});
-					this.setYB();
+					this.props.actions.setDirection('YB');
 					break;
 				case 39:
-					this.setState({
-						XF: true,
-						XB: false,
-						YF: false,
-						YB: false
-					});
-					this.setXF();
+					this.props.actions.setDirection('XF');
 					break;
 				case 40:
-					this.setState({
-						XF: false,
-						XB: false,
-						YF: true,
-						YB: false
-					});
-					this.setYF();
+					this.props.actions.setDirection('YF');
 					break;
 				default:
 					break;
@@ -62,7 +41,7 @@ class Snake extends React.Component {
 		});
 	}
 
-	setXF() {
+	/*setXF() {
 		if(this.state.XF == true && (this.state.x + 20) < this.props.max_width) {
 			this.setState({
 				x: this.state.x + this.state.speed
@@ -120,16 +99,16 @@ class Snake extends React.Component {
 		this.setState({
 			segments: new_segments
 		});
-	}
+	}*/
 
 	render() {
 		var segments = [];
-		for(var i = 0; i < this.state.segments.length; i++) {
+		for(var i = 0; i < this.props.snake.segments.length; i++) {
 			segments.push(
 				<Rect
-					x={this.state.segments[i].x} y={this.state.segments[i].y}
+					x={this.props.snake.segments[i].x} y={this.props.snake.segments[i].y}
 					width={20} height={20}
-					fill={this.state.color}
+					fill={this.props.snake.color}
 					stroke={'#000000'}
 					strokeWidth={1}
 					key={i}

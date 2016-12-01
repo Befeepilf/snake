@@ -3,11 +3,11 @@ var path = require('path');
 
 var dirs = {
 	'build': path.resolve(__dirname, 'distribution'),
-	'app': path.resolve(__dirname, 'source/components')
+	'app': path.resolve(__dirname, 'source')
 };
 
 var config = {
-	entry: dirs.app + '/index.jsx',
+	entry: dirs.app + '/components/index.jsx',
 	output: {
 		path: dirs.build,
 		filename: 'bundle.js'
@@ -15,9 +15,13 @@ var config = {
 	module: {
 		loaders: [
 			{
-				test: /\.jsx?/,
+				test: /\.jsx$/,
 				include: dirs.app,
-				loader: 'babel'
+				loader: 'babel-loader',
+				exclude: /node_modules/,
+				query: {
+					presets: ['react', 'es2015']
+				}
 			}
 		]
 	}

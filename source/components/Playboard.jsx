@@ -5,21 +5,12 @@ import Snake from './Snake.jsx';
 import Food from './Food.jsx';
 
 class Playboard extends React.Component {
-	constructor(...args) {
-		super(...args);
-
-		this.state = {
-			width: (Math.floor($('body').width() / 20) * 20),
-			height: (Math.floor($('body').height() / 20) * 20)
-		};
-	}
-
 	render() {
 		return(
-			<Stage width={this.state.width} height={this.state.height} style={{background: '#212121'}}>
+			<Stage width={this.props.playboard.width} height={this.props.playboard.height} style={{background: this.props.playboard.color}}>
 				<Layer>
-					<Snake max_width={this.state.width} max_height={this.state.height}/>
-					<Food max_width={this.state.width} max_height={this.state.height}/>
+					<Snake snake={this.props.snake} max_width={this.props.playboard.width} max_height={this.props.playboard.height} actions={this.props.actions}/>
+					<Food food={this.props.food} max_width={this.props.playboard.width} max_height={this.props.playboard.height}/>
 				</Layer>
 			</Stage>
 		);
