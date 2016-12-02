@@ -20,9 +20,6 @@ class Snake extends React.Component {
 
 		$(document).on('keydown', (event) => {
 			switch(event.keyCode) {
-				case 32:
-					this.props.actions.addSegment();
-					break;
 				case 37:
 					this.props.actions.setDirection('XB');
 					break;

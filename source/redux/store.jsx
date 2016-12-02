@@ -1,13 +1,13 @@
 import {applyMiddleware, compose, createStore} from 'redux';
-import reducer from './reducers/index.jsx';
+import reducer_game from './reducers/reducer_game.jsx';
 import logger from 'redux-logger';
 
 let finalCreateStore = compose(
-	applyMiddleware()
+	applyMiddleware(logger())
 )(createStore);
 
-let configureStore = function(initialState = {playboard: {}, snake: {}, food: {}}) {
-	return finalCreateStore(reducer, initialState);
+let configureStore = function(initialState = {game: {}}) {
+	return finalCreateStore(reducer_game, initialState);
 }
 
 export default configureStore;

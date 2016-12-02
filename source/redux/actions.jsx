@@ -6,11 +6,6 @@ let actions = {
 			type: 'SET_DIRECTION',
 			direction: direction
 		}
-	},
-	addSegment: function() {
-		return {
-			type: 'ADD_SEGMENT'
-		}
 	}
 }
 
